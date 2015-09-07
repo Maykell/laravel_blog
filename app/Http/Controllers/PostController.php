@@ -30,7 +30,6 @@ class PostController extends Controller
     public function show($id)
     {
 
-        //$post = $this->post->where('title', $title)->first();
         $post = $this->post->find($id);
         return view('posts.single', ['post'=>$post]);
 

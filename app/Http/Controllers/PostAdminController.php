@@ -55,8 +55,10 @@ class PostAdminController extends Controller
     }
 
     public function destroy($id){
-        $this->post->find($id)->tags()->detach();
-        $this->post->find($id)->delete();
+        $post = $this->post->find($id);
+        $post->tags()->detach();
+        $post->comments()->delete();
+        $post->delete();
 
         return redirect()->route('admin.posts.index');
     }
